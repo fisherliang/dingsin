@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="選擇服務類型並留下聯絡資料，即可啟動與錠心財顧的合作。我們將協助你釐清財務問題，訂出行動路線。">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>預約諮詢｜錠心財顧</title>
+  <style>
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      margin: 0;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+    header {
+      background: #1C3D5A;
+      color: white;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .section {
+      max-width: 720px;
+      margin: auto; /* ✅ 改為自然外距 */
+      padding: 2.5rem 1.5rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      background: #2E9CDB;
+      color: white;
+      border: none;
+      margin-top: 0;
+      
+      font-size: 1.2rem;
+      border-radius: 6px;
+      padding: 0.75rem;
+    }
+
+    .error-msg {
+      color: #d9534f;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+        const toggle = document.getElementById('menu-toggle');
+        const nav = document.getElementById('nav-links');
+        if (toggle && nav) {
+          toggle.addEventListener('click', () => {
+            nav.classList.toggle('show');
+          });
+        }
+      });
+  </script>
+
+  <header>
+    <h1>預約與問卷填寫</h1>
+    <p>請選擇您希望的服務，並填寫相關基本資料與需求</p>
+  </header>
+
+  <main class="section">
+    <form id="booking-form">
+      <div id="success-message" style="display:none; margin-top:2rem; padding:1rem; background:#e6f8ec; color:#267c42; border-radius:6px; text-align:center;">
+        ✅ 預約成功！我們將於 24 小時內與您聯繫。<br>
+        即將為您跳轉回首頁…
+      </div>
+
+      <label for="service">選擇服務類型：</label>
+      <select id="service" name="entry.258740824">
+        <option value="">請選擇</option>
+        <option value="年度財務規劃">年度財務規劃</option>
+        <option value="主題式諮詢">主題式諮詢</option>
+        <option value="單次諮詢">單次諮詢</option>
+      </select>
+      <div class="error-msg" id="error-service"></div>
+
+      <label for="name">您的姓名：</label>
+      <input type="text" id="name" name="entry.77048460" required />
+      <div class="error-msg" id="error-name"></div>
+
+      <label for="email">電子信箱：</label>
+      <input type="email" id="email" name="entry.1942211631" required />
+      <div class="error-msg" id="error-email"></div>
+
+      <label for="phone">聯絡電話：</label>
+      <input type="tel" id="phone" name="entry.859698431" required />
+      <div class="error-msg" id="error-phone"></div>
+
+      <label for="note">您的目前財務問題或想了解的主題（選填）：</label>
+      <textarea id="note" name="entry.28828671" rows="5"></textarea>
+      
+      <button type="submit">送出預約申請</button>
+    </form>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+
+  <script>
+    const form = document.getElementById('booking-form');
+    const successMessage = document.getElementById('success-message');
+
+    function showError(id, message) {
+      document.getElementById(id).textContent = message;
+    }
+
+    function clearErrors() {
+      const errors = document.querySelectorAll('.error-msg');
+      errors.forEach(e => e.textContent = '');
+    }
+
+    function validateForm() {
+      let isValid = true;
+      clearErrors();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('service').value;
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^[0-9\-+() ]{8,15}$/;
+
+      if (!name) {
+        showError('error-name', '請填寫姓名');
+        isValid = false;
+      }
+
+      if (!email || !emailRegex.test(email)) {
+        showError('error-email', '請填寫正確的 Email 格式');
+        isValid = false;
+      }
+
+      if (!phone || !phoneRegex.test(phone)) {
+        showError('error-phone', '請填寫正確的聯絡電話');
+        isValid = false;
+      }
+
+      if (!service) {
+        showError('error-service', '請選擇服務類型');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!validateForm()) return;
+
+      const formData = new FormData(form);
+      const url = 'https://docs.google.com/forms/d/e/1FAIpQLSeCpY7HtWcGlcaSYmaCPCNPtupfOCpLlR0OE2dR0rjCyURSww/formResponse';
+
+      fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).then(() => {
+        form.reset();
+        successMessage.style.display = 'block';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 3000);
+      }).catch(() => {
+        alert('預約送出失敗，請稍後再試。');
+      });
+    });
+  </script>
+
+  
+
+
+</body>
+</html>

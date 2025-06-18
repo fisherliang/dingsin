@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>聯絡我們｜錠心財顧</title>
+  <style>
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      margin: 0;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+    header {
+      background: #1C3D5A;
+      color: white;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .section {
+      max-width: 720px;
+      margin: auto;
+      padding: 3rem 1.5rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    button {
+      background: #2E9CDB;
+      color: white;
+      border: none;
+      margin-top: 0;
+      cursor: pointer;
+      font-size: 1.2rem;
+      border-radius: 6px;
+      padding: 0.75rem;
+    }
+    
+    .info {
+      background: #e9f4fb;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+        const toggle = document.getElementById('menu-toggle');
+        const nav = document.getElementById('nav-links');
+        if (toggle && nav) {
+          toggle.addEventListener('click', () => {
+            nav.classList.toggle('show');
+          });
+        }
+      });
+  </script>
+  <header>
+    <h1>聯絡我們與合作邀約</h1>
+    <p>歡迎講座合作、品牌聯名或內容共創，錠心財顧期待與你合作</p>
+  </header>
+
+  <main class="section">
+    <form action="#" method="post">
+      <label for="name">姓名</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">聯絡電話</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="organization">所屬單位／品牌名稱</label>
+      <input type="text" id="organization" name="organization">
+
+      <label for="type">合作類型</label>
+      <select id="type" name="type">
+        <option value="">請選擇</option>
+        <option value="講座邀約">講座邀約</option>
+        <option value="品牌合作">品牌合作</option>
+        <option value="內容共創">內容共創</option>
+        <option value="其他">其他</option>
+      </select>
+
+      <label for="message">留言與需求簡述</label>
+      <textarea id="message" name="message" rows="5"></textarea>
+
+      <button type="submit">送出合作訊息</button>
+    </form>
+
+    <div class="info">
+      <p><strong>聯絡 Email：</strong> fisherliang.tw@gmail.com</p>
+      <p><strong>聯絡電話：</strong> 0937-177-753</p>
+    </div>
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>

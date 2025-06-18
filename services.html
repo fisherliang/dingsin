@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="從年度財務規劃、主題式諮詢到單次顧問會談，錠心財顧提供客製化、無壓力的財務規劃服務，幫助你理清家庭財務方向。">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>服務介紹｜錠心財顧</title>
+  <style>
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      margin: 0;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+    header {
+      background: #1C3D5A;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section {
+      padding: 3rem 1.5rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .card h2 {
+      margin-top: 0;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #2E9CDB;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .plan-toggle {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .toggle-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid #00416A;
+      background: #fff;
+      color: #00416A;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .toggle-btn.active {
+      background: #00416A;
+      color: #fff;
+    }
+    .plan-card {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    @media (max-width: 768px) {
+      .plan-toggle {
+        flex-direction: column;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+        const toggle = document.getElementById('menu-toggle');
+        const nav = document.getElementById('nav-links');
+        if (toggle && nav) {
+          toggle.addEventListener('click', () => {
+            nav.classList.toggle('show');
+          });
+        }
+      });
+  </script>
+  
+  <header>
+    <h1>我們的財務顧問服務</h1>
+    <p>根據你的需求選擇最合適的方式，安心踏出財務第一步</p>
+  </header>
+
+  <main class="section">
+    <div class="card">
+      <h2>年度財務規劃</h2>
+      <p>適合需要全盤理財規劃的家庭或個人，包含完整報告與行動建議，以及一對一的顧問時數。</p>
+      <p>服務流程：預約 → 問卷 → 初談 → 報告 → 諮詢</p>
+      <p>NT$ 120,000 / 年</p>
+      <a class="cta-button" href="#">立即預約</a>
+    </div>
+
+    <div class="card">
+      <h2>主題式諮詢</h2>
+      <div class="grid">
+        <div>
+          <strong>📄 保單健檢</strong>
+          <p>了解現有保障是否重複或不足。</p>
+        </div>
+        <div>
+          <strong>🎓 教育金規劃</strong>
+          <p>規劃孩子成長每一階段的教育預算。</p>
+        </div>
+        <div>
+          <strong>💰 資產配置</strong>
+          <p>根據風險屬性設計長期投資策略。</p>
+        </div>
+        <div>
+          <strong>📜 稅務與傳承</strong>
+          <p>面對財富移轉的節稅與安排策略。</p>
+        </div>
+        <div>
+          <strong>🧓 退休金規劃</strong>
+          <p>打造能安心生活的退休金方案。</p>
+        </div>
+        <div>
+          <strong>✈️ 旅行基金</strong>
+          <p>實現每年出國一次的小夢想。</p>
+        </div>
+      </div>
+      <a class="cta-button" href="#">預約主題諮詢</a>
+    </div>
+
+    <div class="card">
+      <h2>單次諮詢</h2>
+      <p>想先體驗一次專業理財顧問服務？我們提供彈性單次諮詢，讓你聚焦當前煩惱並獲得建議。</p>
+      <p><strong>常見提問：</strong>「我適合哪種理財方式？」「該不該買這份保單？」</p>
+      <a class="cta-button" href="#">預約單次諮詢</a>
+    </div>
+
+    <div class="feature">
+      <h2>加購服務(可選)</h2>
+      <ul>
+        <li>保單整理與保障缺口圖解分析　NT$ 3,000</li>
+        <li>家庭財務共識會議主持（雙方參與）　NT$ 5,000</li>
+        <li>投資紀律追蹤表＋每月提醒　NT$ 3,000／半年</li>
+      </ul>
+    </div>
+
+    <section class="section">
+      <h2>服務方案比較</h2>
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; text-align:center; font-size:0.95rem;">
+          <thead style="background:#f0f4f8;">
+            <tr>
+              <th style="padding:1rem; border:1px solid #ccc;">方案類型</th>
+              <th style="padding:1rem; border:1px solid #ccc;">適合對象</th>
+              <th style="padding:1rem; border:1px solid #ccc;">內容包含</th>
+              <th style="padding:1rem; border:1px solid #ccc;">費用</th>
+              <th style="padding:1rem; border:1px solid #ccc;">建議使用情境</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:1rem; border:1px solid #ccc;"><strong>年度財務規劃</strong></td>
+              <td style="padding:1rem; border:1px solid #ccc;">希望掌握全盤財務、建立長期策略的個人或家庭</td>
+              <td style="padding:1rem; border:1px solid #ccc;">完整財務報告書＋24小時顧問時數（彈性使用）</td>
+              <td style="padding:1rem; border:1px solid #ccc;">NT$ 72,000（平均每小時$3,000）</td>
+              <td style="padding:1rem; border:1px solid #ccc;">結婚育兒、轉職、退休規劃、資產整合等</td>
+            </tr>
+            <tr>
+              <td style="padding:1rem; border:1px solid #ccc;"><strong>主題式諮詢</strong></td>
+              <td style="padding:1rem; border:1px solid #ccc;">針對單一議題需要深入建議的使用者</td>
+              <td style="padding:1rem; border:1px solid #ccc;">一次主題諮詢會談（約1.5小時）＋摘要紀錄</td>
+              <td style="padding:1rem; border:1px solid #ccc;">NT$ 8,000 / 次</td>
+              <td style="padding:1rem; border:1px solid #ccc;">保單檢視、教育金、退休金、資產配置、稅務傳承等</td>
+            </tr>
+            <tr>
+              <td style="padding:1rem; border:1px solid #ccc;"><strong>單次諮詢</strong></td>
+              <td style="padding:1rem; border:1px solid #ccc;">目前有一個明確問題，想獲得專業建議</td>
+              <td style="padding:1rem; border:1px solid #ccc;">一對一會談（約60分鐘），提供口頭建議</td>
+              <td style="padding:1rem; border:1px solid #ccc;">NT$ 5,000 / 次</td>
+              <td style="padding:1rem; border:1px solid #ccc;">購屋資金如何配置？是否應中止保單？選擇哪種退休制度？</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>服務方案比較</h2>
+      <div class="plan-toggle">
+        <button class="toggle-btn active" onclick="showPlan('yearly')">年度顧問方案</button>
+        <button class="toggle-btn" onclick="showPlan('topic')">主題式諮詢</button>
+        <button class="toggle-btn" onclick="showPlan('custom')">專案型合作</button>
+      </div>
+
+      <div class="plan-card" id="yearly">
+        <h3>年度顧問方案</h3>
+        <p>適合中高資產家庭、企業主，需長期諮詢與全面規劃者</p>
+        <ul>
+          <li>24 小時顧問時數（可分次使用）</li>
+          <li>專屬理財報告書乙份</li>
+          <li>全年專人回覆，24 小時內回應</li>
+          <li>每半年一次檢視會議</li>
+        </ul>
+        <p><strong>費用：</strong> NT$72,000／年</p>
+      </div>
+
+      <div class="plan-card" id="topic" style="display: none;">
+        <h3>主題式諮詢</h3>
+        <p>適合想解決單一議題，如退休、教育金、資產配置者</p>
+        <ul>
+          <li>單次 90 分鐘線上／實體諮詢</li>
+          <li>提供建議摘要與模擬數據</li>
+          <li>可依議題延伸服務</li>
+        </ul>
+        <p><strong>費用：</strong> NT$12,000 起</p>
+      </div>
+
+      <div class="plan-card" id="custom" style="display: none;">
+        <h3>專案型合作</h3>
+        <p>適合高資產個人／家庭需整合稅務、保險、繼承等複雜情境</p>
+        <ul>
+          <li>依需求組合顧問、信託、會計、律師等專業團隊</li>
+          <li>彈性時程與交付內容</li>
+          <li>報價與合約另議</li>
+        </ul>
+        <p><strong>費用：</strong> 客製報價</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+
+  <script>
+  function showPlan(planId) {
+    const plans = document.querySelectorAll('.plan-card');
+    const buttons = document.querySelectorAll('.toggle-btn');
+    plans.forEach(p => p.style.display = 'none');
+    document.getElementById(planId).style.display = 'block';
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="錠心財顧是獨立理財顧問服務，由CFP專業顧問提供客觀、不推銷商品的財務規劃建議，協助你面對人生每個財務選擇。">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <title>錠心財顧｜首頁</title>
+  <style>
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      margin: 0;
+      background-color: #f4f7fa;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #1C3D5A, #2E9CDB);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .cta-buttons a {
+      background: #FFD264;
+      color: #1C3D5A;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      margin: 0 0.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .section {
+      padding: 3rem 1.5rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    footer {
+      background: #1C3D5A;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+   
+    
+
+
+  .more-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    background-color: #2E9CDB;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .more-button:hover {
+    background-color: #227cb0;
+    transform: translateY(-2px);
+  }
+
+  .flow-wrapper {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .flow-scroll {
+    display: flex;
+    gap: 1.25rem;
+    min-width: 700px;
+  }
+
+  .flow-step {
+    flex: 0 0 auto;
+    width: 220px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .step-number {
+    background-color: #2E9CDB;
+    color: white;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    border-radius: 50%;
+    margin: 0 auto 0.75rem;
+  }
+
+  .flow-step h3 {
+    color: #1C3D5A;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+  }
+
+  .flow-step p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+  }
+
+
+
+  </style>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
+        const toggle = document.getElementById('menu-toggle');
+        const nav = document.getElementById('nav-links');
+        if (toggle && nav) {
+          toggle.addEventListener('click', () => {
+            nav.classList.toggle('show');
+          });
+        }
+      });
+  </script>
+
+  <header>
+    <h1>為你的財務人生，定下安心節奏</h1>
+    <p>獨立客觀的理財顧問服務，幫助你釐清現狀、看清未來</p>
+    <div class="cta-buttons">
+      <a href="booking.html">立即預約諮詢</a>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2>我們的服務</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>年度財務規劃</h3>
+        <p>量身訂製的財務規劃報告書 + 顧問諮詢時數，協助你掌握家庭財務全貌。</p>
+        <a href="services.html" class="more-button">了解更多</a>
+
+      </div>
+      <div class="card">
+        <h3>主題式諮詢</h3>
+        <p>針對保單、退休、教育金、資產配置等議題，給你明確建議與方向。</p>
+        <a href="services.html" class="more-button">了解更多</a>
+      </div>
+      <div class="card">
+        <h3>單次諮詢</h3>
+        <p>只想問一個問題？試試單次顧問會談，立即獲得解答。</p>
+        <a href="services.html" class="more-button">了解更多</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>為什麼選擇我們</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>獨立客觀</h3>
+        <p>我們不賣產品、不拿佣金，純粹只為你的利益著想。</p>
+      </div>
+      <div class="card">
+        <h3>客製服務</h3>
+        <p>依據你的人生目標與家庭狀況量身打造財務建議。</p>
+      </div>
+      <div class="card">
+        <h3>實戰經驗</h3>
+        <p>超過 13 年金融業與理財規劃經驗，兼具專業與溫度。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>服務流程</h2>
+    <div class="flow-wrapper">
+      <div class="flow-scroll">
+        <div class="flow-step">
+          <div class="step-number">1</div>
+          <h3>預約填表</h3>
+          <p>選擇方案並留下基本資料，我們會盡快與你聯繫。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-number">2</div>
+          <h3>填寫問卷</h3>
+          <p>透過問卷了解你的財務目標與現況，節省溝通時間。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-number">3</div>
+          <h3>初次會談</h3>
+          <p>進行 60~90 分鐘的會議，釐清需求與合作方式。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-number">4</div>
+          <h3>報告製作</h3>
+          <p>依據資料撰寫專屬報告書，提供具體建議與策略。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-number">5</div>
+          <h3>彈性諮詢</h3>
+          <p>顧問時數可分次使用，針對變化做滾動調整。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>第一次諮詢，我們會聊什麼？</h2>
+    <p>我們會用 60～90 分鐘，從你的生活出發，而不是從商品開始。</p>
+    <ul>
+      <li>你目前最擔心的財務問題是什麼？</li>
+      <li>有哪些未來想實現的目標？</li>
+      <li>對你來說，理想的生活會是什麼樣子？</li>
+    </ul>
+    <p>我會協助你盤點現況，釐清盲點與機會。這不是推銷，而是一場深入的對話。</p>
+  </section>
+
+
+
+  <section class="section">
+    <h2>客戶怎麼說</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>小芸媽，台北</h3>
+        <p>「原本對教育金很焦慮，梁顧問幫我們把未來路徑畫出來，心裡踏實很多。」</p>
+      </div>
+      <div class="card">
+        <h3>志強爸，新竹</h3>
+        <p>「不像業務來賣東西，而是一起想辦法。讓我們一家開始有了明確方向。」</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>近期觀點</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>面對股災，該如何分散風險？</h3>
+        <p>成熟投資人如何堅持財務原則與心理準備。</p>
+      </div>
+      <div class="card">
+        <h3>月月領息還能少繳稅？</h3>
+        <p>高股息ETF的稅務優勢一次看懂。</p>
+      </div>
+      <div class="card">
+        <h3>教育金怎麼準備才夠？</h3>
+        <p>從學費、補習到留學，精算你孩子的未來。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>錠心財顧 © 2025 | 由梁蕭錠 CFPⓇ 提供專業服務</p>
+    <p>隱私權條款 | 聯絡方式 | Facebook</p>
+  </footer>
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+
+</body>
+</html>
