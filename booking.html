@@ -4,10 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="選擇服務類型並留下聯絡資料，即可啟動與錠心財顧的合作。我們將協助你釐清財務問題，訂出行動路線。">
+  <meta property="og:title" content="錠心財顧 Dingsin Financial">
+  <meta property="og:description" content="梁蕭錠CFP®提供財務健診、教育金、退休與資產配置等高品質服務。">
+  <meta property="og:image" content="https://xdliang.net/images/og.jpg">
+  <meta property="og:url" content="https://xdliang.net/">
+  <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="navbar.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <title>預約諮詢｜錠心財顧</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHVHTMWFZZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VHVHTMWFZZ');
+  </script>
+
   <style>
     body {
       font-family: 'Microsoft JhengHei', sans-serif;
@@ -95,11 +111,11 @@
       </div>
 
       <label for="service">選擇服務類型：</label>
-      <select id="service" name="entry.258740824">
+      <select id="service" name="entry.258740824" required>
         <option value="">請選擇</option>
-        <option value="年度財務規劃">年度財務規劃</option>
-        <option value="主題式諮詢">主題式諮詢</option>
-        <option value="單次諮詢">單次諮詢</option>
+        <option value="yearly">年度財務規劃</option>
+        <option value="topic">主題式諮詢</option>
+        <option value="custom">單次諮詢</option>
       </select>
       <div class="error-msg" id="error-service"></div>
 
@@ -203,7 +219,17 @@
     });
   </script>
 
-  
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const type = urlParams.get('type');
+      if (type) {
+        const select = document.getElementById('service');
+        if (select) select.value = type;
+      }
+    });
+  </script>
+
 
 
 </body>
