@@ -5,14 +5,13 @@
   <title>LINE 綁定完成</title>
 </head>
 <body>
-  <h2>綁定成功，謝謝！</h2>
-  <p>請稍後，我們正在處理您的資料...</p>
+  <h2>綁定中，請稍候…</h2>
   <script>
     async function main() {
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
 
-      const res = await fetch("https://api.line.me/oauth2/v2.1/token", {
+      const tokenRes = await fetch("https://api.line.me/oauth2/v2.1/token", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
@@ -24,42 +23,28 @@
         })
       });
 
-      const tokenData = await res.json();
-
+      const tokenData = await tokenRes.json();
       const profileRes = await fetch("https://api.line.me/v2/profile", {
         headers: { Authorization: `Bearer ${tokenData.access_token}` }
       });
-
       const profile = await profileRes.json();
 
-      console.log("LINE 使用者：", profile);
+      // 用 POST 傳送到 Google 表單
+      const formData = new FormData();
+      formData.append("entry.983677800", profile.displayName); // ⚠️ 替換成姓名欄的 entry ID
+      formData.append("entry.810554676", profile.userId);       // ⚠️ 替換成 userId 欄的 entry ID
 
-      // ✅ 寫入 Google Sheets Web App
-      fetch("https://script.google.com/macros/s/AKfycbzq-70Lxe2_owvdEiAV05Z1snrIXmYYLBXR42J29yy3zg_QpIKO1QRu0QXEaBJUdrsn/exec", {
+
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLScdgKqRzSbNOgex6nnmxP1A3w__Yt_cjZSaeYOFkEh7o_SfUg/formResponse", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: profile.displayName,
-          userId: profile.userId
-        })
-      })
-      .then(res => res.text())
-      .then(result => {
-        console.log("寫入結果：", result);
-        document.body.innerHTML += `<p>綁定成功，${profile.displayName}！</p>`;
-      })
-      .catch(err => {
-        console.error("寫入錯誤：", err);
-        document.body.innerHTML += `<p>錯誤：${err}</p>`;
+        mode: "no-cors",
+        body: formData
       });
+
+      document.body.innerHTML = `<h2>綁定成功，${profile.displayName}！</h2><p>我們已收到您的資料，謝謝。</p>`;
     }
 
     main();
-
-    console.log(profile);
-    </script>
-
-
-
+  </script>
 </body>
 </html>
