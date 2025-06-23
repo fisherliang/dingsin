@@ -23,79 +23,43 @@
           client_secret: "f0d8dc36fbe68d65546393db4e76e518"
         })
       });
+
       const tokenData = await res.json();
 
       const profileRes = await fetch("https://api.line.me/v2/profile", {
         headers: { Authorization: `Bearer ${tokenData.access_token}` }
       });
+
       const profile = await profileRes.json();
 
-      // 寫入 Google Sheets
-      await fetch("https://script.google.com/macros/s/AKfycbzq-70Lxe2_owvdEiAV05Z1snrIXmYYLBXR42J29yy3zg_QpIKO1QRu0QXEaBJUdrsn/exec", {
+      console.log("LINE 使用者：", profile);
+
+      // ✅ 寫入 Google Sheets Web App
+      fetch("https://script.google.com/macros/s/AKfycbzq-70Lxe2_owvdEiAV05Z1snrIXmYYLBXR42J29yy3zg_QpIKO1QRu0QXEaBJUdrsn/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: profile.displayName,
           userId: profile.userId
         })
+      })
+      .then(res => res.text())
+      .then(result => {
+        console.log("寫入結果：", result);
+        document.body.innerHTML += `<p>綁定成功，${profile.displayName}！</p>`;
+      })
+      .catch(err => {
+        console.error("寫入錯誤：", err);
+        document.body.innerHTML += `<p>錯誤：${err}</p>`;
       });
-
-      document.body.innerHTML += `<p>綁定完成，${profile.displayName}！</p>`;
     }
 
     main();
 
     console.log(profile);
+    </script>
 
-  </script>
 
-  <script>
-  async function main() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
 
-    const res = await fetch("https://api.line.me/oauth2/v2.1/token", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        grant_type: "authorization_code",
-        code: code,
-        redirect_uri: "https://www.xdliang.net/line-callback.html",
-        client_id: "你的ChannelID",
-        client_secret: "你的ChannelSecret"
-      })
-    });
-
-    const tokenData = await res.json();
-
-    const profileRes = await fetch("https://api.line.me/v2/profile", {
-      headers: { Authorization: `Bearer ${tokenData.access_token}` }
-    });
-    const profile = await profileRes.json();
-
-    // 🔧 寫入 Google Sheets
-    fetch("https://script.google.com/macros/s/你的WebApp部署網址/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: profile.displayName,
-        userId: profile.userId
-      })
-    })
-    .then(res => res.text())
-    .then(result => {
-      console.log("寫入回應：", result);
-      document.body.innerHTML += `<p>伺服器回應：${result}</p>`;
-    })
-    .catch(err => {
-      console.error("寫入錯誤：", err);
-      document.body.innerHTML += `<p>錯誤：${err}</p>`;
-    });
-  }
-
-  main(); // 🚀 執行 async function
-</script>
-
-  
 </body>
 </html>
