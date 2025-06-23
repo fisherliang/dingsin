@@ -31,7 +31,7 @@
       const profile = await profileRes.json();
 
       // 寫入 Google Sheets
-      await fetch("https://script.google.com/macros/s/AKfycbyvVwbRdfh0nbCayXzk7eE3cXLCmGyiMenZxJvgdLdO0jEMIhyv5m6R_pxsB8jMFqId/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbzq-70Lxe2_owvdEiAV05Z1snrIXmYYLBXR42J29yy3zg_QpIKO1QRu0QXEaBJUdrsn/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -44,6 +44,27 @@
     }
 
     main();
+
+    console.log(profile);
+
+
+    await fetch("https://script.google.com/macros/s/你的WebApp部署網址/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: profile.displayName,
+        userId: profile.userId
+      })
+    }).then(res => res.text())
+      .then(result => {
+        console.log("寫入回應：", result);
+        document.body.innerHTML += `<p>伺服器回應：${result}</p>`;
+      }).catch(err => {
+        console.error("寫入錯誤：", err);
+        document.body.innerHTML += `<p>錯誤：${err}</p>`;
+      });
+
+
   </script>
 </body>
 </html>
