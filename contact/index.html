@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="錠心財顧｜獨立CFP理財顧問，為你打造專屬的財務規劃與人生藍圖">
+  <meta property="og:title" content="錠心財顧 Dingsin Financial">
+  <meta property="og:description" content="梁蕭錠CFP®提供財務健診、教育金、退休與資產配置等高品質服務。">
+  <meta property="og:image" content="https://xdliang.net/images/og.jpg">
+  <meta property="og:url" content="https://xdliang.net/">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/dingsin/styles/style.css" />
+
+  <title>聯絡我們｜錠心財顧</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHVHTMWFZZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VHVHTMWFZZ');
+  </script>
+
+</head>
+  <body>
+
+    <header class="site-header">
+  <div class="container nav-container">
+    <a href="/" class="logo">錠心財顧</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-icon">
+      <i class="fas fa-bars"></i>
+    </label>
+    <nav class="nav-menu">
+      <a href="/dingsin/">首頁</a>
+      <a href="/dingsin/about">關於我</a>
+      <a href="/dingsin/services">服務項目</a>
+      <a href="/dingsin/blog">文章專區</a>
+      <a href="/dingsin/booking">預約諮詢</a>
+      <a href="/dingsin/contact">聯絡我們</a>
+    </nav>
+  </div>
+</header>
+
+    <main>
+
+        
+<div class="page-contact">
+  <section class="contact-header">
+    <div class="container">
+      <h1>聯絡我們與合作邀約</h1>
+      <p>歡迎講座合作、品牌聯名或內容共創，錠心財顧期待與你合作</p>
+    </div>
+  </section>
+
+  <section class="contact-form">
+    <div class="container">
+
+      <form id="booking-form">
+        <div id="success-message" style="display:none; margin-top:2rem; padding:1rem; background:#e6f8ec; color:#267c42; border-radius:6px; text-align:center;">
+          ✅ 訊息成功送出！我們將於 24 小時內與您聯繫。<br>
+          即將為您跳轉回首頁…
+        </div>
+
+        <label for="name">姓名</label>
+        <input type="text" id="name" name="entry.1553867127" required />
+        <div class="error-msg" id="error-name"></div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="entry.1518054150" required />
+        <div class="error-msg" id="error-email"></div>
+
+        <label for="phone">聯絡電話</label>
+        <input type="tel" id="phone" name="entry.537669520" required>
+        <div class="error-msg" id="error-phone"></div>
+
+        <label for="organization">所屬單位／品牌名稱</label>
+        <input type="text" id="organization" name="entry.1491210169" required>
+        <div class="error-msg" id="error-organization"></div>
+
+        <label for="cotype">合作類型</label>
+        <select id="cotype" name="entry.2120394330" required>
+          <option value="">請選擇</option>
+          <option value="講座邀約">講座邀約</option>
+          <option value="品牌合作">品牌合作</option>
+          <option value="內容共創">內容共創</option>
+          <option value="其他">其他</option>
+        </select>
+        <div class="error-msg" id="error-cotype"></div>
+
+        <label for="message">留言與需求簡述</label>
+        <textarea id="message" name="entry.1572766628" rows="5"></textarea>
+
+        <button type="submit">送出合作訊息</button>
+      </form>
+
+    <div class="info">
+      <p><strong>聯絡 Email：</strong> fisherliang.tw@gmail.com</p>
+    </div>
+    </div>
+  </section>
+</div>
+
+<script>
+    const form = document.getElementById('booking-form');
+    const successMessage = document.getElementById('success-message');
+
+    function showError(id, message) {
+      document.getElementById(id).textContent = message;
+    }
+
+    function clearErrors() {
+      const errors = document.querySelectorAll('.error-msg');
+      errors.forEach(e => e.textContent = '');
+    }
+
+    function validateForm() {
+      let isValid = true;
+      clearErrors();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const organization = document.getElementById('organization').value.trim();
+      const type = document.getElementById('cotype').value;
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^[0-9\-+() ]{8,15}$/;
+
+      if (!name) {
+        showError('error-name', '請填寫姓名');
+        isValid = false;
+      }
+
+      if (!email || !emailRegex.test(email)) {
+        showError('error-email', '請填寫正確的 Email 格式');
+        isValid = false;
+      }
+
+      if (!phone || !phoneRegex.test(phone)) {
+        showError('error-phone', '請填寫正確的聯絡電話');
+        isValid = false;
+      }
+
+      if (!organization) {
+        showError('error-organization', '請填寫所屬單位或品牌名稱');
+        isValid = false;
+      }
+
+      if (!type) {
+        showError('error-cotype', '請選擇合作類型');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!validateForm()) return;
+
+      const formData = new FormData(form);
+      const url = 'https://docs.google.com/forms/d/e/1FAIpQLSdUNsfUByYu107hp4kn_IJiX7UJ2wM9ja_voTykiRZBgre1gQ/formResponse';
+
+
+      fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).then(() => {
+        form.reset();
+        successMessage.style.display = 'block';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 30000);
+      }).catch(() => {
+        alert('訊息送出失敗，請稍後再試。');
+      });
+    });
+  </script>
+
+
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 錠心財顧｜All rights reserved.</p>
+  </div>
+</footer>
+
+  </body>
+</html>

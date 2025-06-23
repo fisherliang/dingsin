@@ -1,0 +1,87 @@
+/* 色彩與字體變數 */
+:root {
+  --color-primary: #1C3D5A;
+  --color-accent: #80D0FF;
+  --color-bg-light: #F0F5F9;
+  --color-text: #333;
+  --color-text-alt: #666;
+  --font-main: 'Microsoft JhengHei', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: #f4f7fa;
+  color: var(--color-text);
+  line-height: 1.4;
+  margin: 0;
+}
+h1 {
+  margin: 1rem;
+}
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+a:hover{
+  color: var(--color-accent);
+}
+
+/* 表格基礎樣式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+thead {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* 響應式處理 */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+  }
+
+  td::before {
+    position: absolute;
+    top: 0.75rem;
+    left: 1rem;
+    width: 45%;
+    padding-right: 0.5rem;
+    white-space: nowrap;
+    font-weight: bold;
+    color: #2E3B4E;
+    content: attr(data-label);
+  }
+}

@@ -1,0 +1,73 @@
+.page-home .hero {
+  background: linear-gradient(to right, #1C3D5A, #2E9CDB);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.page-home .hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.page-home .hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+.page-home .features {
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin: auto;
+}
+.page-home .features .grid {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.section {
+  padding: 3rem 1.5rem;
+  max-width: 960px;
+  margin: auto;
+}
+
+.flow-wrapper {
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.flow-scroll {
+  display: flex;
+  gap: 1.25rem;
+  min-width: 700px;
+}
+
+.flow-step {
+  flex: 0 0 auto;
+  width: 220px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.step-number {
+  background-color: #2E9CDB;
+  color: white;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  border-radius: 50%;
+  margin: 0 auto 0.75rem;
+}
+
+.flow-step h3 {
+  color: #1C3D5A;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.flow-step p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+}

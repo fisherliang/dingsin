@@ -1,0 +1,46 @@
+.page-about .about-header {
+  background: var(--color-primary);
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.page-about .about-header h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.page-about .about-content {
+  padding: 2rem 2rem 2rem 2rem;
+  max-width: 960px;
+  margin: auto;
+}
+.page-about .about-content h2 {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  border-left: 4px solid #004080;
+  padding-left: 0.75rem;
+}
+.page-about .about-content ul {
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  max-width: 960px;
+  margin: auto;
+}
+.profile img {
+  max-width: 240px;
+  border-radius: 16px;
+}
+.profile-text {
+  flex: 1;
+}
+
+.feature {
+  margin-top: 2rem;
+}
+

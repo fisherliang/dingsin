@@ -1,0 +1,62 @@
+.page-services .services-header {
+  background: var(--color-primary);
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.page-services .services-header h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.page-services .services-list {
+  padding: 3rem 1rem;
+}
+.page-services .service-block {
+  margin-bottom: 2.5rem;
+}
+
+.page-services .services-action {
+  padding: 0rem 1rem 4rem;
+}
+
+.page-services .faq {
+  border-top: 1px solid #ccc;
+  padding-top: 2rem;
+}
+.page-services .faq h3 {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+}
+.page-services .faq p {
+  margin-bottom: 1rem;
+}
+
+.plan-toggle {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.toggle-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #00416A;
+  background: #fff;
+  color: #00416A;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.toggle-btn.active {
+  background: #00416A;
+  color: #fff;
+}
+.plan-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+@media (max-width: 768px) {
+  .plan-toggle {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,21 @@
+.page-contact .contact-header {
+  background: var(--color-primary);
+  color: white;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.page-contact .contact-header h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.page-contact .contact-form {
+  padding: 3rem 1rem;
+}
+
+.info {
+  background: #e9f4fb;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
