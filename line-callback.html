@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>LINE 綁定完成</title>
+</head>
+<body>
+  <h2>綁定成功，謝謝！</h2>
+  <p>請稍後，我們正在處理您的資料...</p>
+  <script>
+    async function main() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const code = urlParams.get('code');
+
+      const res = await fetch("https://api.line.me/oauth2/v2.1/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          grant_type: "authorization_code",
+          code: code,
+          redirect_uri: "https://www.xdliang.net/line-callback.html",
+          client_id: "2007623699",
+          client_secret: "09e03f05d431a8f9e2edd1d507e0d993"
+        })
+      });
+      const tokenData = await res.json();
+
+      const profileRes = await fetch("https://api.line.me/v2/profile", {
+        headers: { Authorization: `Bearer ${tokenData.access_token}` }
+      });
+      const profile = await profileRes.json();
+
+      // 寫入 Google Sheets
+      await fetch("https://script.google.com/macros/s/AKfycbyvVwbRdfh0nbCayXzk7eE3cXLCmGyiMenZxJvgdLdO0jEMIhyv5m6R_pxsB8jMFqId/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: profile.displayName,
+          userId: profile.userId
+        })
+      });
+
+      document.body.innerHTML += `<p>綁定完成，${profile.displayName}！</p>`;
+    }
+
+    main();
+  </script>
+</body>
+</html>
