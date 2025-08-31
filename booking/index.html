@@ -2,24 +2,52 @@
 <html lang="zh-Hant">
   <head>
   <meta charset="UTF-8" />
-  <title>預約諮詢｜錠心財顧</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="錠心財顧｜獨立CFP理財顧問，為你打造專屬的財務規劃與人生藍圖">
+  <meta property="og:title" content="錠心財顧 Dingsin Financial">
+  <meta property="og:description" content="梁蕭錠CFP®提供財務健診、教育金、退休與資產配置等高品質服務。">
+  <meta property="og:image" content="https://xdliang.net/images/og.jpg">
+  <meta property="og:url" content="https://xdliang.net/">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/styles/style.css" />
+
+  <title>預約諮詢｜錠心財顧</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHVHTMWFZZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VHVHTMWFZZ');
+  </script>
+
 </head>
-  <body class="site">
+  <body>
 
     <header class="site-header">
-  <nav class="nav-container">
-    <a href="/" class="">首頁</a>
-    <a href="/about" class="">關於我們</a>
-    <a href="/services" class="">服務內容</a>
-    <a href="/booking" class="active">預約諮詢</a>
-    <a href="/contact" class="">聯絡我們</a>
-  </nav>
+  <div class="container nav-container">
+    <a href="/" class="logo">錠心財顧</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-icon">
+      <i class="fas fa-bars"></i>
+    </label>
+    <nav class="nav-menu">
+      <a href="/">首頁</a>
+      <a href="/about">關於我</a>
+      <a href="/services">服務項目</a>
+      <a href="/blog">文章專區</a>
+      <a href="/booking">預約諮詢</a>
+      <a href="/contact">聯絡我們</a>
+    </nav>
+  </div>
 </header>
 
     <main>
-      
+
+        
 <div class="page-booking">
   <section class="booking-header">
     <div class="container">
@@ -31,75 +59,138 @@
   <section class="booking-form">
     <div class="container">
 
-      
+      <form id="booking-form">
+        <div id="success-message" style="display:none; margin-top:2rem; padding:1rem; background:#e6f8ec; color:#267c42; border-radius:6px; text-align:center;">
+          ✅ 預約成功！我們將於 1 日內與您聯繫。<br>
+          即將為您跳轉回首頁…
+        </div>
 
-      
-
-
-<form action="https://example.com" method="POST" target="_blank">
-  
-    <div class="form-group">
-      <label for="name">姓名</label>
-
-      
-        <input type="text" id="name" name="entry.77048460"
-           required  />
-      
-    </div>
-  
-    <div class="form-group">
-      <label for="phone">聯絡電話</label>
-
-      
-        <input type="tel" id="phone" name="entry.859698431"
-           required  />
-      
-    </div>
-  
-    <div class="form-group">
-      <label for="email">電子信箱</label>
-
-      
-        <input type="email" id="email" name="emailAddress"
-           required  />
-      
-    </div>
-  
-    <div class="form-group">
-      <label for="serviceType">服務類型</label>
-
-      
-        <select id="serviceType" name="entry.258740824"  required >
+        <label for="serviceType">選擇服務類型：</label>
+        <select id="serviceType" name="entry.258740824" required>
           <option value="">請選擇</option>
-          
-            <option value="年度理財健檢">年度理財健檢</option>
-          
-            <option value="主題式規劃">主題式規劃</option>
-          
-            <option value="顧問諮詢時數">顧問諮詢時數</option>
-          
+          <option value="yearly">年度財務規劃</option>
+          <option value="topic">主題式諮詢</option>
+          <option value="custom">單次諮詢</option>
         </select>
-      
-    </div>
-  
-    <div class="form-group">
-      <label for="question">想諮詢的財務問題</label>
+        <div class="error-msg" id="error-service"></div>
 
-      
-        <textarea id="question" name="entry.28828671" rows="4"
-          ></textarea>
-      
-    </div>
-  
+        <label for="name">您的姓名：</label>
+        <input type="text" id="name" name="entry.77048460" required />
+        <div class="error-msg" id="error-name"></div>
 
-  <div class="form-action">
-    <button type="submit" class="button primary">送出</button>
-  </div>
-</form>
+        <label for="email">電子信箱：</label>
+        <input type="email" id="email" name="entry.1942211631" required />
+        <div class="error-msg" id="error-email"></div>
 
+        <label for="phone">聯絡電話：</label>
+        <input type="tel" id="phone" name="entry.859698431" required />
+        <div class="error-msg" id="error-phone"></div>
+
+        <div style="display:none;">
+          <label>如果你是人類請不要填這個欄位：</label>
+          <input id="extra_info" type="text">
+        </div>
+
+        <label for="note">您的目前財務問題或想了解的主題（選填）：</label>
+        <textarea id="note" name="entry.28828671" rows="5"></textarea>
+        
+        <button type="submit">送出預約申請</button>
+      </form>
     </div>
   </section>
 </div>
+
+<script>
+    const form = document.getElementById('booking-form');
+    const successMessage = document.getElementById('success-message');
+
+    function showError(id, message) {
+      document.getElementById(id).textContent = message;
+    }
+
+    function clearErrors() {
+      const errors = document.querySelectorAll('.error-msg');
+      errors.forEach(e => e.textContent = '');
+    }
+
+    function validateForm() {
+      let isValid = true;
+      clearErrors();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const service = document.getElementById('serviceType').value;
+      const extra_info = document.getElementById('extra_info').value.trim();
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^[0-9\-+() ]{8,15}$/;
+
+      if (extra_info !== '') {
+        return false; // 阻止送出
+      }
+      
+      if (!name) {
+        showError('error-name', '請填寫姓名');
+        isValid = false;
+      }
+
+      if (!email || !emailRegex.test(email)) {
+        showError('error-email', '請填寫正確的 Email 格式');
+        isValid = false;
+      }
+
+      if (!phone || !phoneRegex.test(phone)) {
+        showError('error-phone', '請填寫正確的聯絡電話');
+        isValid = false;
+      }
+
+      if (!service) {
+        showError('error-serviceType', '請選擇服務類型');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!validateForm()) return;
+
+      const formData = new FormData(form);
+      const url = 'https://docs.google.com/forms/d/e/1FAIpQLSeCpY7HtWcGlcaSYmaCPCNPtupfOCpLlR0OE2dR0rjCyURSww/formResponse';
+
+      fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      }).then(() => {
+        form.reset();
+        successMessage.style.display = 'block';
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 3000);
+      }).catch(() => {
+        alert('預約送出失敗，請稍後再試。');
+      });
+    });
+  </script>
+
+  <script>
+      // 解析 URL 參數
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get('type');
+
+      // 如果有傳參數，則預設填入
+      if (type) {
+        const select = document.getElementById('serviceType');
+        if (select) {
+          select.value = type;
+        }
+      }
+  </script>
+
 
     </main>
     <footer class="site-footer">
