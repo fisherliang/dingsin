@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="錠心財顧｜獨立CFP理財顧問，為你打造專屬的財務規劃與人生藍圖">
+  <meta property="og:title" content="錠心財顧 Dingsin Financial">
+  <meta property="og:description" content="梁蕭錠CFP®提供財務健診、教育金、退休與資產配置等高品質服務。">
+  <meta property="og:image" content="https://xdliang.net/images/og.jpg">
+  <meta property="og:url" content="https://xdliang.net/">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/style.css" />
+
+  <title>遺產稅扣除額試算｜錠心理財工具</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHVHTMWFZZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VHVHTMWFZZ');
+  </script>
+
+</head>
+  <body>
+
+    <header class="site-header">
+  <div class="container nav-container">
+    <a href="/" class="logo">錠心財顧</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-icon">
+      <i class="fas fa-bars"></i>
+    </label>
+    <nav class="nav-menu">
+      <a href="/">首頁</a>
+      <a href="/about">關於我</a>
+      <a href="/services">服務項目</a>
+      <a href="/blog">文章專區</a>
+      <a href="/tools">試算工具</a>
+      <a href="/booking">預約諮詢</a>
+      <a href="/contact">聯絡我們</a>
+    </nav>
+  </div>
+</header>
+
+    <main>
+
+        
+
+<div class="page-about">
+  <section class="about-header">
+      <div class="container">
+        <h1>試算工具</h1>
+        <p>先用數字感受風險與目標，幫你做個簡單的財務體檢。</p>
+      </div>
+    </section>
+
+  <section class="page page-tools">
+    <div class="container">
+      <div class="compound-card">
+        <div class="compound-header">
+          <h1>遺產稅扣除額試算</h1>
+          <p>以 114 年度（2025）公告金額計算：</p>
+          <!-- 折疊按鈕 -->
+          <button class="deduct-toggle" onclick="toggleDeductTable()">
+            ➕ 展開扣除額標準
+          </button>
+
+          <!-- 折疊內容（預設 hidden） -->
+          <div id="deduct-table-wrapper" class="deduct-collapsed">
+            <table class="deduct-table">
+              <tbody>
+                <tr><td>免稅額</td><td>1,333 萬元</td></tr>
+                <tr><td>配偶扣除額</td><td>553 萬元</td></tr>
+                <tr>
+                  <td>直系血親卑親屬扣除額</td>
+                  <td>
+                    每人 56 萬元<br>
+                    （未成年者另按距 18 歲成年的「每年 +56 萬」加計）
+                  </td>
+                </tr>
+                <tr><td>父母扣除額</td><td>每人 138 萬元</td></tr>
+                <tr><td>重度以上身心障礙</td><td>每人 693 萬元</td></tr>
+                <tr><td>受扶養兄弟姊妹／祖父母</td><td>每人 56 萬元</td></tr>
+                <tr><td>喪葬費扣除額</td><td>138 萬元</td></tr>
+                <tr>
+                  <td>不計入遺產總額</td>
+                  <td>日常生活器具 100 萬元 + 職業工具 56 萬元</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+
+        <!-- Step 1：家庭成員結構 -->
+        <div>
+          <div class="section-title">Step 1：家庭成員結構</div>
+          <div class="section-sub">
+            以「被繼承人死亡當日」的實際親屬狀況為準。拋棄繼承、代位繼承等特殊情況，仍以實際可扣除數額為限。
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="required">是否遺有配偶</label>
+              <div style="display:flex; gap:0.75rem; margin-top:0.25rem;">
+                <label style="font-size:0.85rem;">
+                  <input type="radio" name="ed-spouse" value="yes" checked>
+                  有配偶
+                </label>
+                <label style="font-size:0.85rem;">
+                  <input type="radio" name="ed-spouse" value="no">
+                  無配偶
+                </label>
+              </div>
+              <div class="hint">符合遺產及贈與稅法第 15 條配偶身分者，得適用配偶扣除額。</div>
+            </div>
+
+            <div class="form-group">
+              <label for="ed-descendants" class="required">直系血親卑親屬人數（子女、代位孫子女等）</label>
+              <input type="number" id="ed-descendants" min="0" placeholder="例如：2" />
+              <div class="hint">以實際有繼承權且未拋棄繼承者為準。</div>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="ed-minor-years">未成年直系卑親屬合計距離 18 歲之年數</label>
+              <input type="number" id="ed-minor-years" min="0" step="1" placeholder="例如：兩個孩子分別 10 年與 5 年，合計填 15" />
+              <div class="hint">
+                依國稅局實務：「距屆滿成年之年數，不滿 1 年以 1 年計」，現在成年年齡為 18 歲。
+                此欄不填視同皆已成年。
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="ed-parents">父母人數</label>
+              <input type="number" id="ed-parents" min="0" max="2" placeholder="0～2" />
+              <div class="hint">仍在世且為繼承人者，每人可享父母扣除額。</div>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="ed-sibgp">受扶養兄弟姊妹／祖父母人數</label>
+              <input type="number" id="ed-sibgp" min="0" placeholder="例如：1" />
+              <div class="hint">
+                指依法認定由被繼承人扶養之兄弟姊妹與祖父母，每人得享 56 萬扣除額。
+                若有未成年兄弟姊妹，其距 18 歲成年年數的加扣額，本版暫未細分，需自行補充評估。
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="ed-disabled">重度以上身心障礙／嚴重病人親屬人數</label>
+              <input type="number" id="ed-disabled" min="0" placeholder="例如：1" />
+              <div class="hint">
+                限配偶、直系卑親屬、父母、受扶養兄弟姊妹與祖父母範圍內，每人可以再加扣 693 萬元。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2：喪葬費扣除 -->
+        <div>
+          <div class="section-title">Step 2：喪葬費扣除額</div>
+          <div class="section-sub">
+            目前喪葬費扣除額為 138 萬元，一般實務上多為適用。
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="required">是否適用喪葬費扣除額</label>
+              <div style="display:flex; gap:0.75rem; margin-top:0.25rem;">
+                <label style="font-size:0.85rem;">
+                  <input type="radio" name="ed-funeral" value="yes" checked>
+                  是，適用 138 萬元固定額
+                </label>
+                <label style="font-size:0.85rem;">
+                  <input type="radio" name="ed-funeral" value="no">
+                  否，先不列入試算
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 按鈕列 -->
+        <div class="action-row">
+          <button class="btn-primary" type="button" onclick="calculateEstateDeduction()">
+            <span class="icon">▶</span><span>開始試算扣除額</span>
+          </button>
+          <button class="btn-secondary" type="button" onclick="resetEstateDeduction()">
+            重設
+          </button>
+          <div class="note">
+            ＊本工具僅計算免稅額與「固定金額扣除額」，債務、醫療費、未繳稅捐等按實際金額扣除部分，請另行評估。
+          </div>
+        </div>
+
+        <div id="ed-error" class="error" style="display:none;"></div>
+
+        <!-- 結果區 -->
+        <div id="ed-result" class="result-card" style="display:none;">
+          <div class="result-topline">
+            <div class="result-main" id="ed-result-main"></div>
+            <div class="result-sub" id="ed-result-sub"></div>
+          </div>
+
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-item-label">遺產稅免稅額</div>
+              <div class="result-item-value" id="ed-exempt"></div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">各項扣除額合計</div>
+              <div class="result-item-value" id="ed-deduction-total"></div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">免稅額＋扣除額合計</div>
+              <div class="result-item-value" id="ed-exempt-plus"></div>
+            </div>
+          </div>
+
+          <div class="result-grid" style="margin-top:0.75rem;">
+            <div class="result-item">
+              <div class="result-item-label">配偶扣除額</div>
+              <div class="result-item-value" id="ed-spouse-amount"></div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">直系血親卑親屬扣除額（含未成年加扣）</div>
+              <div class="result-item-value" id="ed-desc-amount"></div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">父母扣除額</div>
+              <div class="result-item-value" id="ed-parents-amount"></div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">兄弟姊妹／祖父母扣除額</div>
+              <div class="result-item-value" id="ed-sibgp-amount"></div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">重度以上身心障礙特別扣除額</div>
+              <div class="result-item-value" id="ed-disabled-amount"></div>
+            </div>
+            <div class="result-item">
+              <div class="result-item-label">喪葬費扣除額</div>
+              <div class="result-item-value" id="ed-funeral-amount"></div>
+            </div>
+          </div>
+
+          <div class="result-grid" style="margin-top:0.75rem;">
+            <div class="result-item">
+              <div class="result-item-label">不計入遺產總額（生活器具＋職業工具）</div>
+              <div class="result-item-value" id="ed-nonincluded"></div>
+            </div>
+          </div>
+
+          <div style="margin-top:0.75rem; font-size:0.8rem; color:var(--text-sub);">
+            注意：實際課稅遺產淨額為「遺產總額 − 不計入遺產總額 − 免稅額 − 各項扣除額 − 債務及其他實際扣除」，
+            本工具並未計算完整稅額，僅作為初步討論與觀念教學之用。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="/scripts/tools/estate-deduction.js"></script>
+
+
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 錠心財顧｜All rights reserved.</p>
+  </div>
+</footer>
+
+  </body>
+</html>

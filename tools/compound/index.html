@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="錠心財顧｜獨立CFP理財顧問，為你打造專屬的財務規劃與人生藍圖">
+  <meta property="og:title" content="錠心財顧 Dingsin Financial">
+  <meta property="og:description" content="梁蕭錠CFP®提供財務健診、教育金、退休與資產配置等高品質服務。">
+  <meta property="og:image" content="https://xdliang.net/images/og.jpg">
+  <meta property="og:url" content="https://xdliang.net/">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/style.css" />
+
+  <title>複利計算器｜錠心理財工具</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHVHTMWFZZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VHVHTMWFZZ');
+  </script>
+
+</head>
+  <body>
+
+    <header class="site-header">
+  <div class="container nav-container">
+    <a href="/" class="logo">錠心財顧</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-icon">
+      <i class="fas fa-bars"></i>
+    </label>
+    <nav class="nav-menu">
+      <a href="/">首頁</a>
+      <a href="/about">關於我</a>
+      <a href="/services">服務項目</a>
+      <a href="/blog">文章專區</a>
+      <a href="/tools">試算工具</a>
+      <a href="/booking">預約諮詢</a>
+      <a href="/contact">聯絡我們</a>
+    </nav>
+  </div>
+</header>
+
+    <main>
+
+        
+
+<div class="page-about">
+  <section class="about-header">
+      <div class="container">
+        <h1>試算工具</h1>
+        <p>先用數字感受風險與目標，幫你做個簡單的財務體檢。</p>
+      </div>
+    </section>
+
+<section class="page page-tools">
+  <div class="container">
+    <div class="compound-card" id="compound-calculator">
+      <div class="compound-header">
+        <h1>複利計算器</h1>
+        <p>試算在固定報酬率與固定投入條件下，資產在未來的成長情況。</p>
+      </div>
+
+      <!-- Step 1 -->
+      <div>
+        <div class="section-title">Step 1：初始投資金額</div>
+        <div class="section-sub">請輸入一開始投入的本金。</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="initial" class="required">初始投資金額（元）</label>
+            <input type="number" id="initial" placeholder="例如：100000" min="0" />
+            <div class="hint">一次性投入的金額</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div>
+        <div class="section-title">Step 2：每月固定投入與年數</div>
+        <div class="section-sub">假設每月月底做同樣金額的投入。</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="monthly" class="required">每月固定投入（元）</label>
+            <input type="number" id="monthly" placeholder="例如：10000" />
+            <div class="hint">若為月月領息或定期提領，可輸入負數</div>
+          </div>
+          <div class="form-group">
+            <label for="years" class="required">累積期間（年）</label>
+            <input type="number" id="years" placeholder="例如：20" min="0" step="1" />
+            <div class="hint">至少輸入 1 年以上較有意義</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div>
+        <div class="section-title">Step 3：報酬率假設</div>
+        <div class="section-sub">填入預估的「年化報酬率」，以及你想觀察的「上下波動幅度」。</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="rate" class="required">預估年化報酬率（%）</label>
+            <input type="number" id="rate" placeholder="例如：6" step="0.1" />
+            <div class="hint">以百分比表示，例如 6 表示 6%/年</div>
+          </div>
+          <div class="form-group">
+            <label for="variance">報酬率波動範圍（±%，選填）</label>
+            <input type="number" id="variance" placeholder="例如：2" step="0.1" />
+            <div class="hint">會同時計算「-波動」、「基準」、「+波動」三種情境</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div>
+        <div class="section-title">Step 4：複利頻率</div>
+        <div class="section-sub">選擇每年計息次數。</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="frequency" class="required">複利頻率</label>
+            <select id="frequency">
+              <option value="1">每年一次（Annually）</option>
+              <option value="2">每年兩次（Semiannually）</option>
+              <option value="4">每年四次（Quarterly）</option>
+              <option value="12" selected>每月一次（Monthly）</option>
+              <option value="365">每日計息（Daily）</option>
+            </select>
+            <div class="hint">會自動換算成等效「月利率」做試算</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action -->
+      <div class="action-row">
+        <button class="btn-primary" type="button" onclick="calculateCompound()">
+          <span class="icon">▶</span><span>開始試算</span>
+        </button>
+        <button class="btn-secondary" type="button" onclick="resetCompound()">
+          重設
+        </button>
+        <div class="note">＊試算結果僅供參考，不代表任何報酬保證。</div>
+      </div>
+
+      <div id="error-msg" class="error" style="display:none;"></div>
+
+      <!-- Result 數字 -->
+      <div id="result" class="result-card" style="display:none;">
+        <div class="result-topline">
+          <div class="result-main" id="result-main"></div>
+          <div class="result-sub" id="result-sub"></div>
+        </div>
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-item-label">期末金額</div>
+            <div class="result-item-value" id="result-final"></div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label">總投入本金</div>
+            <div class="result-item-value" id="result-total"></div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label">累積利息</div>
+            <div class="result-item-value" id="result-interest"></div>
+          </div>
+        </div>
+
+        <!-- 報酬率情境表 -->
+        <div class="range-table-wrapper" id="range-wrapper" style="display:none;">
+          <div style="margin-top:0.75rem; font-size:0.8rem; color:var(--text-sub);">
+            報酬率情境比較
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>年化報酬率假設</th>
+                <th>期末金額</th>
+                <th>總投入本金</th>
+                <th>累積利息</th>
+              </tr>
+            </thead>
+            <tbody id="range-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- 動態圖表 -->
+        <div class="chart-wrapper">
+          <div class="chart-title">總資產成長曲線</div>
+          <div class="chart-sub">以整年度為橫軸，顯示不同報酬率情境下的累積金額。</div>
+          <canvas id="savingsChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/scripts/tools/compound.js"></script>
+
+
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 錠心財顧｜All rights reserved.</p>
+  </div>
+</footer>
+
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="錠心財顧｜獨立CFP理財顧問，為你打造專屬的財務規劃與人生藍圖">
+  <meta property="og:title" content="錠心財顧 Dingsin Financial">
+  <meta property="og:description" content="梁蕭錠CFP®提供財務健診、教育金、退休與資產配置等高品質服務。">
+  <meta property="og:image" content="https://xdliang.net/images/og.jpg">
+  <meta property="og:url" content="https://xdliang.net/">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/style.css" />
+
+  <title>保險年齡計算器｜錠心理財工具</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHVHTMWFZZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VHVHTMWFZZ');
+  </script>
+
+</head>
+  <body>
+
+    <header class="site-header">
+  <div class="container nav-container">
+    <a href="/" class="logo">錠心財顧</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="nav-icon">
+      <i class="fas fa-bars"></i>
+    </label>
+    <nav class="nav-menu">
+      <a href="/">首頁</a>
+      <a href="/about">關於我</a>
+      <a href="/services">服務項目</a>
+      <a href="/blog">文章專區</a>
+      <a href="/tools">試算工具</a>
+      <a href="/booking">預約諮詢</a>
+      <a href="/contact">聯絡我們</a>
+    </nav>
+  </div>
+</header>
+
+    <main>
+
+        
+
+<div class="page-about">
+  <section class="about-header">
+      <div class="container">
+        <h1>試算工具</h1>
+        <p>先用數字感受風險與目標，幫你做個簡單的財務體檢。</p>
+      </div>
+    </section>
+
+<section class="page page-tools">
+  <div class="container">
+    <div class="compound-card">
+      <div class="compound-header">
+        <h1>保險年齡計算器</h1>
+        <p>依照「最近生日法」試算，協助評估壽險、醫療險保費區間。</p>
+      </div>
+
+      <!-- 說明 -->
+      <div class="section-sub" style="margin-bottom: 1rem;">
+        多數壽險公司採用「最近生日年齡」：<br>
+        以評估日期為基準，距離最近的生日滿幾歲，若距離下次生日小於 6 個月，視同已滿下一歲。
+      </div>
+
+      <!-- 輸入欄位 -->
+      <div>
+        <div class="section-title">輸入生日與評估日</div>
+        <div class="section-sub">評估日預設為今天，需要試算過去或未來投保日可自行修改。</div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="ia-birthdate" class="required">出生日期</label>
+            <input type="date" id="ia-birthdate" />
+            <div class="hint">請依身分證或戶籍謄本填寫</div>
+          </div>
+
+          <div class="form-group">
+            <label for="ia-eval-date">評估日（投保日）</label>
+            <input type="date" id="ia-eval-date" />
+            <div class="hint">預設為今天，若要預估未來投保日可自行修改</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 按鈕列 -->
+      <div class="action-row">
+        <button class="btn-primary" type="button" onclick="calculateInsuranceAge()">
+          <span class="icon">▶</span><span>開始計算</span>
+        </button>
+        <button class="btn-secondary" type="button" onclick="resetInsuranceAge()">
+          重設
+        </button>
+        <div class="note">＊結果為一般業界慣用算法，實際仍以各保險公司規定為準。</div>
+      </div>
+
+      <div id="ia-error" class="error" style="display:none;"></div>
+
+      <!-- 結果區 -->
+      <div id="ia-result" class="result-card" style="display:none;">
+        <div class="result-topline">
+          <div class="result-main" id="ia-result-main"></div>
+          <div class="result-sub" id="ia-result-sub"></div>
+        </div>
+
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-item-label">實際年齡（足歲）</div>
+            <div class="result-item-value" id="ia-chron-age"></div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label">距離上次生日</div>
+            <div class="result-item-value" id="ia-since-last-birthday"></div>
+          </div>
+          <div class="result-item">
+            <div class="result-item-label">距離下一次生日</div>
+            <div class="result-item-value" id="ia-to-next-birthday"></div>
+          </div>
+        </div>
+
+        <div style="margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-sub);">
+          說明：若距離下次生日小於 6 個月，保險年齡會「自動進位」至下一歲。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<script src="/scripts/tools/insurance-age.js"></script>
+
+
+    </main>
+    <footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 錠心財顧｜All rights reserved.</p>
+  </div>
+</footer>
+
+  </body>
+</html>

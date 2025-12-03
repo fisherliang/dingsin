@@ -1,0 +1,479 @@
+/* src/styles/pages/tools-compound.css */
+
+:root {
+  --primary: #123c7c;
+  --primary-soft: #e5edf8;
+  --border: #d0d7e2;
+  --bg: #f7f8fb;
+  --text-main: #1f2933;
+  --text-sub: #6b7380;
+  --danger: #b91c1c;
+}
+
+/* 不要 body {...}，避免全站被改掉 */
+
+.compound-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  padding: 1.75rem 1.75rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.compound-header {
+  margin-bottom: 1.5rem;
+}
+
+.compound-header h1 {
+  font-size: 1.3rem;
+  margin: 0 0 0.25rem;
+  color: var(--text-main);
+}
+
+.compound-header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+.section-title {
+  margin: 1.5rem 0 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.section-sub {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+label {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+}
+
+input[type="number"],
+select {
+  padding: 0.55rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input[type="number"]:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(18, 60, 124, 0.15);
+}
+
+input[type="number"]::placeholder {
+  color: #c0c4d0;
+}
+
+.required::after {
+  content: " *";
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.action-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 1.5rem 0 1rem;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: background 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(18, 60, 124, 0.35);
+}
+
+.btn-primary:hover {
+  background: #0d2f63;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(18, 60, 124, 0.4);
+}
+
+.btn-secondary {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.btn-secondary:hover {
+  background: #d3e0f5;
+}
+
+.btn-primary span.icon {
+  font-size: 1.05rem;
+}
+
+.note {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+}
+
+.result-card {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.result-topline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.result-main {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.result-sub {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.result-item {
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+}
+
+.result-item-label {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  margin-bottom: 0.15rem;
+}
+
+.result-item-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.range-table-wrapper {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+th,
+td {
+  padding: 0.45rem 0.4rem;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: right;
+  white-space: nowrap;
+}
+
+th:first-child,
+td:first-child {
+  text-align: left;
+}
+
+th {
+  background: #f3f4f6;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* 圖表區塊 */
+.chart-wrapper {
+  margin-top: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #d1d5db;
+}
+
+.chart-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.chart-sub {
+  font-size: 0.78rem;
+  color: var(--text-sub);
+  margin-bottom: 0.5rem;
+}
+
+#savingsChart {
+  max-height: 360px;
+}
+
+
+@media (max-width: 640px) {
+  .compound-card {
+    padding: 1.25rem 1.1rem 1.25rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  th,
+  td {
+    font-size: 0.75rem;
+  }
+}
+
+
+/* for tools index */
+/* 工具總覽頁專用樣式 */
+
+.page.page-tools .compound-card {
+  padding: 2rem 2rem 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.page-tools-header {
+  text-align: left;
+  margin-bottom: 1.75rem;
+}
+
+.page-tools-header h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.2rem;
+}
+
+.page-tools-header p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+}
+
+.tool-section {
+  margin-top: 1.9rem;
+}
+
+.tool-section:first-of-type {
+  margin-top: 0.75rem;
+}
+
+.tool-grid {
+  margin-top: 0.9rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.1rem;
+}
+
+@media (min-width: 768px) {
+  .tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tool-card-link {
+  display: block;
+  border-radius: 12px;
+  border: 1px solid #e1e5f0;
+  background: #ffffff;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    border-color 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.tool-card-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 7px 20px rgba(15, 23, 42, 0.12);
+  border-color: var(--primary);
+  background-color: #f8fafc;
+}
+
+.tool-card-label {
+  font-size: 0.78rem;
+  color: var(--text-sub);
+  margin-bottom: 0.2rem;
+}
+
+.tool-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  color: var(--text-main);
+}
+
+.tool-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+.tool-card-cta {
+  margin-top: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.tool-card-cta .icon {
+  font-size: 0.85rem;
+}
+
+.tool-card-disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.tool-card-disabled:hover {
+  transform: none;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  border-color: #e1e5f0;
+  background-color: #ffffff;
+}
+
+.page-tools-footer-note {
+  margin-top: 1.7rem;
+  font-size: 0.78rem;
+}
+
+/* 手機版留白調整 */
+@media (max-width: 640px) {
+  .page.page-tools .compound-card {
+    padding: 1.5rem 1.25rem 1.25rem;
+    margin-top: 1.25rem;
+  }
+}
+
+
+/* 表格用 */
+
+.deduct-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.deduct-table td {
+  padding: 6px 8px;
+  vertical-align: top;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.deduct-table tr:last-child td {
+  border-bottom: none;
+}
+
+.deduct-table td:first-child {
+  width: 38%;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.deduct-table td:last-child {
+  color: var(--text-sub);
+  line-height: 1.5;
+}
+
+/* 折疊按鈕 */
+.deduct-toggle {
+  background: var(--primary-light, #e8eefc);
+  border: 1px solid var(--primary, #4460ff);
+  color: var(--primary, #4460ff);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.deduct-toggle:hover {
+  background: var(--primary, #4460ff);
+  color: #fff;
+}
+
+/* 折疊區塊：預設收合 */
+#deduct-table-wrapper {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.deduct-collapsed {
+  max-height: 0;
+}
+
+.deduct-expanded {
+  max-height: 500px; /* 足夠容納表格高度 */
+}
+

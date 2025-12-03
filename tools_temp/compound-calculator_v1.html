@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>複利計算器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #123c7c;
+      --primary-soft: #e5edf8;
+      --border: #d0d7e2;
+      --bg: #f7f8fb;
+      --text-main: #1f2933;
+      --text-sub: #6b7380;
+      --danger: #b91c1c;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 1.5rem;
+    }
+
+    .compound-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+      padding: 1.75rem 1.75rem 1.5rem;
+      box-sizing: border-box;
+    }
+
+    .compound-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .compound-header h1 {
+      font-size: 1.3rem;
+      margin: 0 0 0.25rem;
+      color: var(--text-main);
+    }
+
+    .compound-header p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-sub);
+    }
+
+    .section-title {
+      margin: 1.5rem 0 0.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .section-sub {
+      margin: 0 0 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+    }
+
+    input[type="number"],
+    select {
+      padding: 0.55rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input[type="number"]:focus,
+    select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(18, 60, 124, 0.15);
+    }
+
+    input[type="number"]::placeholder {
+      color: #c0c4d0;
+    }
+
+    .required::after {
+      content: " *";
+      color: var(--danger);
+      font-weight: 600;
+    }
+
+    .action-row {
+      display: flex;
+      justify-content: flex-start;
+      gap: 0.75rem;
+      align-items: center;
+      margin: 1.5rem 0 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.55rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: background 0.15s ease, transform 0.05s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(18, 60, 124, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: #0d2f63;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(18, 60, 124, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: #d3e0f5;
+    }
+
+    .btn-primary span.icon {
+      font-size: 1.05rem;
+    }
+
+    .note {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+    }
+
+    .result-card {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+    }
+
+    .result-topline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-main {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .result-sub {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .result-item {
+      padding: 0.6rem 0.7rem;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+    }
+
+    .result-item-label {
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      margin-bottom: 0.15rem;
+    }
+
+    .result-item-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .range-table-wrapper {
+      margin-top: 1rem;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    th, td {
+      padding: 0.45rem 0.4rem;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .error {
+      color: var(--danger);
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    /* 圖表區塊 */
+    .chart-wrapper {
+      margin-top: 1.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed #d1d5db;
+    }
+
+    .chart-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .chart-sub {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      margin-bottom: 0.5rem;
+    }
+
+    #savingsChart {
+      max-height: 360px;
+    }
+
+    @media (max-width: 640px) {
+      .compound-card {
+        padding: 1.25rem 1.1rem 1.25rem;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      th, td {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="compound-card" id="compound-calculator">
+  <div class="compound-header">
+    <h1>複利計算器</h1>
+    <p>試算在固定報酬率與固定投入條件下，資產在未來的成長情況。</p>
+  </div>
+
+  <!-- Step 1 -->
+  <div>
+    <div class="section-title">Step 1：初始投資金額</div>
+    <div class="section-sub">請輸入一開始投入的本金。</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="initial" class="required">初始投資金額（元）</label>
+        <input type="number" id="initial" placeholder="例如：100000" min="0" />
+        <div class="hint">一次性投入的金額</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div>
+    <div class="section-title">Step 2：每月固定投入與年數</div>
+    <div class="section-sub">假設每月月底做同樣金額的投入。</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="monthly" class="required">每月固定投入（元）</label>
+        <input type="number" id="monthly" placeholder="例如：10000" />
+        <div class="hint">若為月月領息或定期提領，可輸入負數</div>
+      </div>
+      <div class="form-group">
+        <label for="years" class="required">累積期間（年）</label>
+        <input type="number" id="years" placeholder="例如：20" min="0" step="1" />
+        <div class="hint">至少輸入 1 年以上較有意義</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div>
+    <div class="section-title">Step 3：報酬率假設</div>
+    <div class="section-sub">填入預估的「年化報酬率」，以及你想觀察的「上下波動幅度」。</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="rate" class="required">預估年化報酬率（%）</label>
+        <input type="number" id="rate" placeholder="例如：6" step="0.1" />
+        <div class="hint">以百分比表示，例如 6 表示 6%/年</div>
+      </div>
+      <div class="form-group">
+        <label for="variance">報酬率波動範圍（±%，選填）</label>
+        <input type="number" id="variance" placeholder="例如：2" step="0.1" />
+        <div class="hint">會同時計算「-波動」、「基準」、「+波動」三種情境</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 4 -->
+  <div>
+    <div class="section-title">Step 4：複利頻率</div>
+    <div class="section-sub">選擇每年計息次數。</div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="frequency" class="required">複利頻率</label>
+        <select id="frequency">
+          <option value="1">每年一次（Annually）</option>
+          <option value="2">每年兩次（Semiannually）</option>
+          <option value="4">每年四次（Quarterly）</option>
+          <option value="12" selected>每月一次（Monthly）</option>
+          <option value="365">每日計息（Daily）</option>
+        </select>
+        <div class="hint">會自動換算成等效「月利率」做試算</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action -->
+  <div class="action-row">
+    <button class="btn-primary" onclick="calculateCompound()">
+      <span class="icon">▶</span><span>開始試算</span>
+    </button>
+    <button class="btn-secondary" type="button" onclick="resetCompound()">
+      重設
+    </button>
+    <div class="note">＊試算結果僅供參考，不代表任何報酬保證。</div>
+  </div>
+
+  <div id="error-msg" class="error" style="display:none;"></div>
+
+  <!-- Result 數字 -->
+  <div id="result" class="result-card" style="display:none;">
+    <div class="result-topline">
+      <div class="result-main" id="result-main"></div>
+      <div class="result-sub" id="result-sub"></div>
+    </div>
+    <div class="result-grid">
+      <div class="result-item">
+        <div class="result-item-label">期末金額</div>
+        <div class="result-item-value" id="result-final"></div>
+      </div>
+      <div class="result-item">
+        <div class="result-item-label">總投入本金</div>
+        <div class="result-item-value" id="result-total"></div>
+      </div>
+      <div class="result-item">
+        <div class="result-item-label">累積利息</div>
+        <div class="result-item-value" id="result-interest"></div>
+      </div>
+    </div>
+
+    <!-- 報酬率情境表 -->
+    <div class="range-table-wrapper" id="range-wrapper" style="display:none;">
+      <div style="margin-top:0.75rem; font-size:0.8rem; color:var(--text-sub);">
+        報酬率情境比較
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>年化報酬率假設</th>
+            <th>期末金額</th>
+            <th>總投入本金</th>
+            <th>累積利息</th>
+          </tr>
+        </thead>
+        <tbody id="range-tbody"></tbody>
+      </table>
+    </div>
+
+    <!-- 動態圖表 -->
+    <div class="chart-wrapper">
+      <div class="chart-title">總資產成長曲線</div>
+      <div class="chart-sub">以整年度為橫軸，顯示不同報酬率情境下的累積金額。</div>
+      <canvas id="savingsChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  function formatNumber(value) {
+    return value.toLocaleString("zh-TW", {
+      maximumFractionDigits: 0
+    });
+  }
+
+  function calculateFV(yearRatePercent, years, initial, monthly, freqPerYear) {
+    const r = yearRatePercent / 100;         // 年化報酬率（小數）
+    const m = freqPerYear;                   // 每年計息次數
+    const months = Math.round(years * 12);   // 總月數
+
+    if (months <= 0) {
+      return {
+        finalAmount: initial,
+        totalContribution: initial,
+        interest: 0
+      };
+    }
+
+    // 名目期利率
+    const rp = r / m;
+    // 等效月利率： (1 + rp)^(m/12) - 1
+    const rm = (r === 0)
+      ? 0
+      : Math.pow(1 + rp, m / 12) - 1;
+
+    let fvPrincipal, fvContribution;
+
+    if (rm === 0) {
+      fvPrincipal = initial;
+      fvContribution = monthly * months;
+    } else {
+      fvPrincipal = initial * Math.pow(1 + rm, months);
+      fvContribution = monthly * (Math.pow(1 + rm, months) - 1) / rm;
+    }
+
+    const finalAmount = fvPrincipal + fvContribution;
+    const totalContribution = initial + monthly * months;
+    const interest = finalAmount - totalContribution;
+
+    return {
+      finalAmount,
+      totalContribution,
+      interest
+    };
+  }
+
+  let savingsChart = null;
+
+  function updateChart(years, rate, variance, initial, monthly, freq) {
+    const ctx = document.getElementById("savingsChart").getContext("2d");
+    const yearsInt = Math.floor(years);
+    const labels = [];
+    const baseData = [];
+    const aboveData = [];
+    const belowData = [];
+
+    for (let i = 0; i <= yearsInt; i++) {
+      labels.push(`${i}`); //Year
+      const base = calculateFV(rate, i, initial, monthly, freq);
+      baseData.push(Math.round(base.finalAmount));
+
+      if (!isNaN(variance) && variance > 0) {
+        const rAbove = rate + variance;
+        const rBelow = rate - variance;
+
+        if (rAbove > -99) {
+          const above = calculateFV(rAbove, i, initial, monthly, freq);
+          aboveData.push(Math.round(above.finalAmount));
+        } else {
+          aboveData.push(null);
+        }
+
+        if (rBelow > -99) {
+          const below = calculateFV(rBelow, i, initial, monthly, freq);
+          belowData.push(Math.round(below.finalAmount));
+        } else {
+          belowData.push(null);
+        }
+      }
+    }
+
+    const datasets = [];
+
+    if (!isNaN(variance) && variance > 0) {
+      datasets.push({
+        label: `高預估 (${(rate + variance).toFixed(2)}%)`,
+        data: aboveData,
+        borderColor: "#0b1d4a",
+        backgroundColor: "#0b1d4a",
+        tension: 0.2,
+        pointRadius: 3,
+        pointHoverRadius: 4
+      });
+    }
+
+    datasets.push({
+      label: `基準報酬 (${rate.toFixed(2)}%)`,
+      data: baseData,
+      borderColor: "#d9480f",
+      backgroundColor: "#d9480f",
+      tension: 0.2,
+      pointRadius: 3,
+      pointHoverRadius: 4
+    });
+
+    if (!isNaN(variance) && variance > 0) {
+      datasets.push({
+        label: `低預估 (${(rate - variance).toFixed(2)}%)`,
+        data: belowData,
+        borderColor: "#198f8f",
+        backgroundColor: "#198f8f",
+        tension: 0.2,
+        pointRadius: 3,
+        pointHoverRadius: 4
+      });
+    }
+
+    if (savingsChart) {
+      savingsChart.destroy();
+    }
+
+    savingsChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels,
+        datasets
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "bottom"
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const value = context.parsed.y || 0;
+                return `${context.dataset.label}: ${formatNumber(value)} 元`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "年份"
+            }
+          },
+          y: {
+            title: {
+              display: true,
+              text: "累積金額（元）"
+            },
+            ticks: {
+              callback: function(value) {
+                return formatNumber(value);
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+  function calculateCompound() {
+    const initial = parseFloat(document.getElementById("initial").value || "0");
+    const monthly = parseFloat(document.getElementById("monthly").value || "0");
+    const years = parseFloat(document.getElementById("years").value || "0");
+    const rate = parseFloat(document.getElementById("rate").value || "0");
+    const variance = parseFloat(document.getElementById("variance").value || "0");
+    const freq = parseInt(document.getElementById("frequency").value, 10);
+
+    const errorEl = document.getElementById("error-msg");
+    const resultEl = document.getElementById("result");
+    const rangeWrapper = document.getElementById("range-wrapper");
+    const rangeTbody = document.getElementById("range-tbody");
+
+    errorEl.style.display = "none";
+    errorEl.textContent = "";
+    rangeWrapper.style.display = "none";
+    rangeTbody.innerHTML = "";
+
+    // 基本檢查
+    if (isNaN(initial) || isNaN(monthly) || isNaN(years) || isNaN(rate)) {
+      errorEl.style.display = "block";
+      errorEl.textContent = "請確認所有必填欄位都有輸入數字。";
+      resultEl.style.display = "none";
+      return;
+    }
+
+    if (years <= 0) {
+      errorEl.style.display = "block";
+      errorEl.textContent = "累積期間請至少大於 0 年。";
+      resultEl.style.display = "none";
+      return;
+    }
+
+    if (rate < -99) {
+      errorEl.style.display = "block";
+      errorEl.textContent = "年化報酬率不建議小於 -99%。";
+      resultEl.style.display = "none";
+      return;
+    }
+
+    // 基準情境
+    const base = calculateFV(rate, years, initial, monthly, freq);
+
+    document.getElementById("result-main").textContent =
+      `約可累積至 ${formatNumber(Math.round(base.finalAmount))} 元`;
+    document.getElementById("result-sub").textContent =
+      `假設年化報酬率 ${rate.toFixed(2)}%，期間 ${years} 年，每月投入 ${formatNumber(Math.round(monthly))} 元。`;
+
+    document.getElementById("result-final").textContent =
+      `${formatNumber(Math.round(base.finalAmount))} 元`;
+    document.getElementById("result-total").textContent =
+      `${formatNumber(Math.round(base.totalContribution))} 元`;
+    document.getElementById("result-interest").textContent =
+      `${formatNumber(Math.round(base.interest))} 元`;
+
+    // 區間情境（有輸入波動範圍才顯示）
+    if (!isNaN(variance) && variance > 0) {
+      const scenarios = [
+        { label: `年化 ${(rate + variance).toFixed(2)}%（高預估）`, r: rate + variance },
+        { label: `年化 ${rate.toFixed(2)}%（基準值）`, r: rate },
+        { label: `年化 ${(rate - variance).toFixed(2)}%（低預估）`, r: rate - variance }
+      ].filter(s => s.r > -99);
+
+      scenarios.forEach(s => {
+        const r = s.r;
+        const data = calculateFV(r, years, initial, monthly, freq);
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+          <td>${s.label}</td>
+          <td>${formatNumber(Math.round(data.finalAmount))} 元</td>
+          <td>${formatNumber(Math.round(data.totalContribution))} 元</td>
+          <td>${formatNumber(Math.round(data.interest))} 元</td>
+        `;
+
+        rangeTbody.appendChild(tr);
+      });
+
+      if (scenarios.length > 0) {
+        rangeWrapper.style.display = "block";
+      }
+    }
+
+    resultEl.style.display = "block";
+
+    // 更新圖表
+    updateChart(years, rate, variance, initial, monthly, freq);
+  }
+
+  function resetCompound() {
+    document.getElementById("initial").value = "";
+    document.getElementById("monthly").value = "";
+    document.getElementById("years").value = "";
+    document.getElementById("rate").value = "";
+    document.getElementById("variance").value = "";
+    document.getElementById("frequency").value = "12";
+
+    document.getElementById("error-msg").style.display = "none";
+    document.getElementById("error-msg").textContent = "";
+    document.getElementById("result").style.display = "none";
+
+    if (savingsChart) {
+      savingsChart.destroy();
+      savingsChart = null;
+    }
+  }
+</script>
+
+</body>
+</html>

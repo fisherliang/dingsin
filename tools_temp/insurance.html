@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="錠心財顧｜獨立CFP理財顧問，為你打造專屬的財務規劃與人生藍圖">
+  <meta property="og:title" content="錠心財顧 Dingsin Financial">
+  <meta property="og:description" content="梁蕭錠CFP®提供財務健診、教育金、退休與資產配置等高品質服務。">
+  <meta property="og:image" content="https://xdliang.net/images/og.jpg">
+  <meta property="og:url" content="https://xdliang.net/">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/style.css" />
+
+  <title>壽險保障缺口與保險年齡試算 | 錠心財顧</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VHVHTMWFZZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-VHVHTMWFZZ');
+  </script>
+
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="/" class="logo">錠心財顧</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="nav-icon">
+        <i class="fas fa-bars"></i>
+      </label>
+      <nav class="nav-menu">
+        <a href="../">首頁</a>
+        <a href="../about">關於我</a>
+        <a href="../services">服務項目</a>
+        <a href="../blog">文章專區</a>
+        <a href="../booking">預約諮詢</a>
+        <a href="../contact">聯絡我們</a>
+      </nav>
+    </div>
+  </header>
+
+<main>
+  <div class="page-booking">
+    <section class="booking-header">
+    <div class="container">
+      <h1>壽險保障缺口與保險年齡試算</h1>
+      <p>本工具僅供初步估算，實際保障規劃仍需搭配完整財務與保單健檢。</p>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- 保險年齡計算器 -->
+    <section class="card">
+      <h2>保險年齡計算器</h2>
+      <p class="muted">依一般壽險公司慣用規則：距離下一次生日 6 個月內，保險年齡即加一歲。</p>
+
+      <div class="grid-2">
+        <div>
+          <label for="birthDate">出生日期（西元）</label>
+          <input type="date" id="birthDate">
+        </div>
+        <div>
+          <label for="refDate">評估日期（預設為今天，可調整）</label>
+          <input type="date" id="refDate">
+        </div>
+      </div>
+
+      <button class="btn-primary" id="calcInsuranceAgeBtn" style="margin-top:1rem;">
+        計算保險年齡
+      </button>
+
+      <div class="result" id="insuranceAgeResult"></div>
+    </section>
+
+    <!-- 壽險保障缺口試算 -->
+    <section class="card">
+      <h2>壽險保障缺口試算</h2>
+      <p class="muted">
+        估算若被保人發生風險後，家庭在生活費、債務、教育金與其他需求上的資金缺口。
+      </p>
+
+      <div class="grid-2">
+        <div>
+          <label for="familyMonthlyExpense">家庭每月生活支出（元）</label>
+          <input type="number" id="familyMonthlyExpense" min="0" step="1000" placeholder="例如：80,000">
+        </div>
+        <div>
+          <label for="supportYears">需支撐年數（年）</label>
+          <input type="number" id="supportYears" min="0" step="1" placeholder="例如：20">
+        </div>
+
+        <div>
+          <label for="debts">未償還貸款本金合計（元）</label>
+          <input type="number" id="debts" min="0" step="10000" placeholder="房貸、信貸等">
+        </div>
+        <div>
+          <label for="educationFund">預估子女教育金（總額，元）</label>
+          <input type="number" id="educationFund" min="0" step="10000" placeholder="可為 0">
+        </div>
+
+        <div>
+          <label for="otherNeeds">其他一次性需求（元）</label>
+          <input type="number" id="otherNeeds" min="0" step="10000" placeholder="喪葬費、預備金等，可為 0">
+        </div>
+        <div>
+          <label for="currentLifeCoverage">現有壽險／意外身故保額總和（元）</label>
+          <input type="number" id="currentLifeCoverage" min="0" step="100000" placeholder="例如：10,000,000">
+        </div>
+
+        <div>
+          <label for="liquidAssets">可支應風險的金融資產（元，可選填）</label>
+          <input type="number" id="liquidAssets" min="0" step="100000" placeholder="存款、投資等">
+        </div>
+      </div>
+
+      <button class="btn-primary" id="calcGapBtn" style="margin-top:1rem;">
+        試算保障缺口
+      </button>
+
+      <div class="result" id="gapResult"></div>
+    </section>
+  </div>
+
+  <script src="../js/insurance-age.js"></script>
+  <script src="../js/life-gap.js"></script>
+</div>
+
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 錠心財顧｜All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
